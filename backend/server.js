@@ -5,6 +5,7 @@ const path = require("path");
 const DbConnect = require("./config/db");
 const authRoutes = require("./routes/authRoutes")
 const iroutes = require("./routes/incomeRoutes")
+const dashboardRoutes = require("./routes/dashboardRoutes")
 const app =  express()
 
 app.use(cors({
@@ -19,6 +20,7 @@ DbConnect();
 //This line mounts the authRoutes router in your Express app, so all routes defined inside it will be prefixed with /api/v1/auth
 app.use("/api/v1/auth",authRoutes)
 app.use("/api/v1/income",iroutes)
+app.use("/api/v1/dashboard",dashboardRoutes)
 
 /*express.static(...) serves static files (like images, PDFs, etc.).
 
