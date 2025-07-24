@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AuthLayout from "../../components/layout/AuthLayout";
 import Input from "../../components/inputs/input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { isValidEmail } from "../../utils/helper";
 import ProfilePicSelector from "../../components/ProfilePicSelector";
+import { API_PATHS } from "../../utils/apiPaths";
+import axiosInstance from "../../utils/axiosinstance";
+import { UserContext } from "../../context/UserContext";
+import { uploadImage } from "../../utils/uploadImage";
 
 const Signup = () => {
   const [profilePic, setProfilePic] = useState();
@@ -11,8 +15,11 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const { updateUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
 
-  const handleSubmit = () => {
+    e.preventDefault();
     if (!name) {
       setError("Name cannot be empty");
       return;
@@ -24,6 +31,36 @@ const Signup = () => {
     if (!password) {
       setError("Password cannot be empty");
       return;
+    }
+    let profileImageUrl = "";
+    if (profilePic) {
+      const imgUploadRes = await uploadImage(profilePic);
+      profileImageUrl = imgUploadRes.imageUrl || "";
+    }
+    try {
+      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
+        fullname: name,
+        email: email,
+        password: password,
+        profileImageUrl: profileImageUrl,
+      });
+
+      const { token, user } = response.data;
+      localStorage.setItem("token", token)
+      updateUser(user);
+      setName("");
+      setEmail("");
+      setPassword("");
+      setProfilePic("");
+      navigate("/dashboard");
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      } else setError("something went wrong", error.message);
+      setName("");
+      setEmail("");
+      setPassword("");
+      setProfilePic("");
     }
   };
   return (
