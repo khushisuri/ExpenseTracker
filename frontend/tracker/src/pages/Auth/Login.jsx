@@ -16,6 +16,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (!isValidEmail(email)) {
       setError("email not valid");
       return;
@@ -26,25 +27,28 @@ const Login = () => {
       return;
     }
 
+    console.log("runs");
     try {
       const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
         email,
         password,
       });
       const { token, user } = response.data;
+      console.log(token, user);
+
       if (token) {
         localStorage.setItem("token", token);
         updateUser(user);
-        console.log("runs");
-
+        setEmail("");
+        setPassword("");
         navigate("/dashboard");
       }
-      setEmail("");
-      setPassword("");
     } catch (error) {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message);
       } else setError("something went wrong", error.message);
+      console.log(error);
+
       setEmail("");
       setPassword("");
     }
@@ -58,7 +62,7 @@ const Login = () => {
           Please enter your details to login
         </p>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e)=>handleSubmit(e)}>
         <Input
           type="email"
           placeholder={"Email address"}
