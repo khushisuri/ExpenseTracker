@@ -26,7 +26,6 @@ const loginUser = async (req, res) => {
 };
 
 const registerUser = async (req, res) => {
-  console.log(req.body);
   
   const { fullname, email, password, profileImageUrl } = req.body;
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 import Home from "./pages/Dashboard/Home";
@@ -10,22 +10,32 @@ import UserProvider from "./context/UserContext";
 const App = () => {
   return (
     <div>
-        <BrowserRouter>
+      <BrowserRouter>
         <UserProvider>
           <Routes>
-              <>
-                <Route path="/login" element={<Login />}></Route>
-                <Route path="/signup" element={<Signup />}></Route>
-                <Route path="/dashboard" element={<Home />}></Route>
-                <Route path="/income" element={<Income />}></Route>
-                <Route path="/expense" element={<Expense />}></Route>
-                <Route path="*" element={<Navigate to="/login" />} />
-              </>
+            <>
+              <Route path="/" element={<Root />}></Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/signup" element={<Signup />}></Route>
+              <Route path="/dashboard" element={<Home />}></Route>
+              <Route path="/income" element={<Income />}></Route>
+              <Route path="/expense" element={<Expense />}></Route>
+              <Route path="*" element={<Navigate to="/login" />} />
+            </>
           </Routes>
-          </UserProvider>
-        </BrowserRouter>
+        </UserProvider>
+      </BrowserRouter>
     </div>
   );
 };
 
 export default App;
+
+const Root = () => {
+  const isAuthenticated = !!localStorage.getItem("token");
+  return isAuthenticated ? (
+    <Navigate to="/dashboard" />
+  ) : (
+    <Navigate to="/login" />
+  );
+};

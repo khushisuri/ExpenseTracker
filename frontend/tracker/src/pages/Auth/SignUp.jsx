@@ -102,9 +102,9 @@ const Signup = () => {
         </button>
         {error && <p className="text-red-400 text-xs">{error}</p>}
         <p className="pt-2">
-          dont have an account?{" "}
-          <Link className="text-blue-500 underline" to="/signup">
-            Signup
+          already have an account?
+          <Link className="text-blue-500 underline" to="/login">
+            Login
           </Link>
         </p>
       </form>

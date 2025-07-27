@@ -9,6 +9,5 @@ export const getCredentials =  (fullname) => {
   const firstchar = firstname.split("")[0]
   const lastname = nameArray[1];
   const lastchar = lastname.split("")[0]
-  console.log(firstname,lastname)
   return firstchar + lastchar
 }

@@ -27,14 +27,12 @@ const Login = () => {
       return;
     }
 
-    console.log("runs");
     try {
       const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
         email,
         password,
       });
       const { token, user } = response.data;
-      console.log(token, user);
 
       if (token) {
         localStorage.setItem("token", token);

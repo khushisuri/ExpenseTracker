@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { SIDE_MENU_DATA } from "../../utils/data";
 import { UserContext } from "../../context/UserContext";
 import { getCredentials } from "../../utils/helper";
 
-const Sidemenu = ({ activemenu }) => {
+const Sidemenu = ({ activemenu, user, clearUser }) => {
   const navigate = useNavigate();
-  const { user, clearUser } = useContext(UserContext);
 
   const handleLogout = () => {
     localStorage.clear();
@@ -19,10 +18,12 @@ const Sidemenu = ({ activemenu }) => {
         {user?.profileImageUrl ? (
           <img src={user?.profileImageUrl} alt="profile pic"></img>
         ) : (
-          <div className="uppercase text-2xl">{getCredentials(user.fullname)}</div>
+          <div className="uppercase text-2xl">
+            {getCredentials(user?.fullname)}
+          </div>
         )}
       </div>
-      <p className="my-5 text-center capitalize">{user.fullname}</p>
+      <p className="my-5 text-center capitalize">{user?.fullname}</p>
       {SIDE_MENU_DATA.map((data) => (
         <div
           onClick={() => {

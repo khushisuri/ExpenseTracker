@@ -12,6 +12,7 @@ export const useUserAuth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    
     if (user) return;
     let isMounted = true;
 
@@ -19,9 +20,9 @@ export const useUserAuth = () => {
       try {
         const response = await axiosInstance.get(API_PATHS.AUTH.GET_USER_INFO);
         if (isMounted && response.data) {
-            console.log("is running");
             
           updateUser(response.data);
+          
         }
       } catch (error) {
         console.error("failed to fetch user", error);
