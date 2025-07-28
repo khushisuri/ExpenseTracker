@@ -6,7 +6,7 @@ import { getCredentials } from "../../utils/helper";
 
 const Sidemenu = ({ activemenu, user, clearUser }) => {
   const navigate = useNavigate();
-
+  
   const handleLogout = () => {
     localStorage.clear();
     clearUser();

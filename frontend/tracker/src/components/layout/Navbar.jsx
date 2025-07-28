@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import Sidemenu from "./Sidemenu";
 
-const Navbar = ({activemenu}) => {
-  const [showSideMenu, setShowSideMenu] = useState(false);
+const Navbar = ({ showSideMenu,setShowSideMenu }) => {
 
   return (
     <>
@@ -12,13 +11,12 @@ const Navbar = ({activemenu}) => {
           onClick={() => setShowSideMenu((prev) => !prev)}
           className="text-2xl cursor-pointer min-[1080px]:hidden"
         >
-          {showSideMenu ?  <HiOutlineX />: <HiOutlineMenu />}
+          {showSideMenu ? <HiOutlineX /> : <HiOutlineMenu />}
         </div>
         <div>
           <h2 className="font-medium">Expense Tracker</h2>
         </div>
       </div>
-      {showSideMenu && <Sidemenu activemenu={activemenu}></Sidemenu>}
     </>
   );
 };

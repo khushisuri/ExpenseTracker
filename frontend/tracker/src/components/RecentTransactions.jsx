@@ -20,7 +20,7 @@ const RecentTransactions = ({ transactions, seeMore }) => {
             icon={item.icon}
             type={item.type}
             date={moment(item.date).format("Do MMM YYYY")}
-            title={item.source}
+            title={item.source? item.source:item.category}
             amount={item.amount}
           />
         ))}

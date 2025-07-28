@@ -13,12 +13,10 @@ const getDashboardData = async (req, res) => {
       // else group by category
       { $group: { _id: null, total: { $sum: "$amount" } } },
     ]);
-
     const totalExpense = await Expense.aggregate([
       { $match: { userId: userObjectId } },
       { $group: { _id: null, total: { $sum: "$amount" } } },
     ]);
-
     const last60DaysIncomeTransactions = await Income.find({
       userId,
       date: { $gte: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000) },

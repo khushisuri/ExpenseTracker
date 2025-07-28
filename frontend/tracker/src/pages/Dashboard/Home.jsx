@@ -8,6 +8,7 @@ import Infocard from "../../components/cards/InfoCard";
 import { IoMdCard } from "react-icons/io";
 import { LuHandCoins } from "react-icons/lu";
 import RecentTransactions from "../../components/RecentTransactions";
+import FinanceOverview from "../../components/FinanceOverview";
 
 const Home = () => {
   useUserAuth();
@@ -34,7 +35,6 @@ const Home = () => {
 
   useEffect(() => {
     fetchDashboardData();
-    console.log(dashboardData);
   }, []);
 
   return (
@@ -70,6 +70,11 @@ const Home = () => {
                   transactions={dashboardData?.recentTransactions}
                   seeMore={() => navigate("/expense")}
                 ></RecentTransactions>
+                <FinanceOverview
+                  totalBalance={dashboardData?.totalBalance}
+                  totalExpense={dashboardData?.totalExpenses}
+                  totalIncome={dashboardData?.totalIncome}
+                />
               </div>
             )}
           </>

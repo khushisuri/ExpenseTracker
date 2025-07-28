@@ -1,15 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext ,  useState } from "react";
 import Navbar from "./Navbar";
 import Sidemenu from "./Sidemenu";
 import { UserContext } from "../../context/UserContext";
 
 const DashboardLayout = ({ children, activemenu }) => {
   const { user, clearUser } = useContext(UserContext);
+  const [showSideMenu, setShowSideMenu] = useState(false);
   return (
     <div activemenu={activemenu}>
-      <Navbar activemenu={activemenu} />
-
-      <div className="flex flex-row">
+      <Navbar showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu} />
+      <div className="flex">
+      {user && showSideMenu && (
+        <div className="min-[1080px]:hidden">
+        <Sidemenu
+          activemenu={activemenu}
+          user={user}
+          clearUser={clearUser}
+        ></Sidemenu>
+        </div>
+      )}
+      <div className="flex flex-row grow">
         <div className="max-[1080px]:hidden">
           {user && (
             <Sidemenu
@@ -20,6 +30,7 @@ const DashboardLayout = ({ children, activemenu }) => {
           )}
         </div>
         <div className="grow mx-5">{children}</div>
+      </div>
       </div>
     </div>
   );

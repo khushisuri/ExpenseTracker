@@ -6,10 +6,10 @@ const addExpense = async (req, res) => {
   const userId = req.user.id;
   try {
     const { icon, category, amount, date } = req.body;
-    if (!source || !amount || !date) {
+    if (!category || !amount || !date) {
       return res
         .status(400)
-        .json({ message: "source amount date cannot be empty" });
+        .json({ message: "category amount date cannot be empty" });
     }
 
     const newExpense = new Expense({
