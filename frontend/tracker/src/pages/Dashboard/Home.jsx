@@ -9,12 +9,16 @@ import { IoMdCard } from "react-icons/io";
 import { LuHandCoins } from "react-icons/lu";
 import RecentTransactions from "../../components/RecentTransactions";
 import FinanceOverview from "../../components/FinanceOverview";
+import ExpenseTransactions from "../../components/ExpenseTransactions";
+import Last30Expenses from "../../components/Last30Expenses";
+import Last60Income from "../../components/Last60Income";
+import IncomeTransactions from "../../components/IncomeTransactions";
 
 const Home = () => {
   useUserAuth();
 
   const [loading, setLoading] = useState(false);
-  const [dashboardData, setDashboardData] = useState(false);
+  const [dashboardData, setDashboardData] = useState();
   const navigate = useNavigate();
   const fetchDashboardData = async () => {
     setLoading(true);
@@ -36,6 +40,8 @@ const Home = () => {
   useEffect(() => {
     fetchDashboardData();
   }, []);
+
+  console.log(dashboardData?.last30DaysExpense?.transactions);
 
   return (
     <DashboardLayout activemenu={"Dashboard"}>
@@ -77,6 +83,33 @@ const Home = () => {
                 />
               </div>
             )}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <ExpenseTransactions
+                transactions={dashboardData?.last30DaysExpense?.transactions}
+                seeMore={() => navigate("/expense")}
+              />
+              <div>
+                {dashboardData?.last30DaysExpense?.transactions && (
+                  <Last30Expenses
+                    data={dashboardData?.last30DaysExpense?.transactions}
+                  />
+                )}
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {dashboardData?.last60DaysIncome?.transactions && (
+                <>
+                  <Last60Income
+                    transactions={dashboardData?.last60DaysIncome?.transactions} 
+                    totalAmount={dashboardData.totalIncome}
+                  />
+                  <IncomeTransactions
+                    transactions={dashboardData?.last60DaysIncome?.transactions}
+                    seeMore={() => navigate("/income")}
+                  />
+                </>
+              )}
+            </div>
           </>
         )}
       </div>
