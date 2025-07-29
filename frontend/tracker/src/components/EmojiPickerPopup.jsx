@@ -2,7 +2,7 @@ import React, {  useState } from "react";
 import EmojiPicker from "emoji-picker-react";
 import { LuImage } from "react-icons/lu";
 
-const EmogiPickerPopup = ({ icon, handleChange }) => {
+const EmojiPickerPopup = ({ icon, handleChange }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -31,4 +31,4 @@ const EmogiPickerPopup = ({ icon, handleChange }) => {
   );
 };
 
-export default EmogiPickerPopup;
+export default EmojiPickerPopup;

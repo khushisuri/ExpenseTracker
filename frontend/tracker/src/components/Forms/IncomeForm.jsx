@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Input from "../inputs/input";
-import EmogiPickerPopup from "../EmogiPickerPopup";
+import EmojiPickerPopup from "../EmojiPickerPopup";
 
-const IncomeForm = () => {
+const IncomeForm = ({addIncome}) => {
   const [values, setValues] = useState({
     source: "",
     amount: "",
@@ -14,8 +14,8 @@ const IncomeForm = () => {
     setValues({ ...values, [key]: value });
   };
   return (
-    <form>
-        <EmogiPickerPopup icon={values.icon} handleChange={handleChange}/>
+    <div>
+      <EmojiPickerPopup icon={values.icon} handleChange={handleChange} />
       <Input
         value={values.source}
         onChange={({ target }) => handleChange("source", target.value)}
@@ -37,10 +37,15 @@ const IncomeForm = () => {
         placeholder=""
         type="date"
       ></Input>
-      <button className="text-purple-600 bg-purple-100 px-6 py-2 border-purple-300 rounded-[10px] cursor-pointer my-6">
+      <button
+        onClick={(e) => {
+          addIncome(e,values);
+        }}
+        className="text-purple-600 bg-purple-100 px-6 py-2 border-purple-300 rounded-[10px] cursor-pointer my-6"
+      >
         Submit
       </button>
-    </form>
+    </div>
   );
 };
 

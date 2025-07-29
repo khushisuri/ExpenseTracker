@@ -6,7 +6,7 @@ import Income from "./pages/Dashboard/Income";
 import Expense from "./pages/Dashboard/Expense";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import UserProvider from "./context/UserContext";
-
+import { Toaster } from "react-hot-toast";
 const App = () => {
   return (
     <div>
@@ -23,6 +23,14 @@ const App = () => {
               <Route path="*" element={<Navigate to="/login" />} />
             </>
           </Routes>
+          <Toaster
+            toastOptions={{
+              className: "",
+              style: {
+                fontSize: "13px",
+              },
+            }}
+          ></Toaster>
         </UserProvider>
       </BrowserRouter>
     </div>
