@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Input from "../inputs/input";
+import EmogiPickerPopup from "../EmogiPickerPopup";
 
 const IncomeForm = () => {
   const [values, setValues] = useState({
@@ -14,6 +15,7 @@ const IncomeForm = () => {
   };
   return (
     <form>
+        <EmogiPickerPopup icon={values.icon} handleChange={handleChange}/>
       <Input
         value={values.source}
         onChange={({ target }) => handleChange("source", target.value)}
