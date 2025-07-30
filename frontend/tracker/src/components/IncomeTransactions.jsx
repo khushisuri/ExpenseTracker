@@ -22,11 +22,12 @@ const IncomeTransactions = ({ transactions, seeMore }) => {
             .slice(0, 5)
             .map((item) => (
               <TransactionCard
-                icon=""
+                icon={item.icon}
                 type="income"
                 date={moment(item.date).format("Do MMM YYYY")}
                 title={item.source ? item.source : item.category}
                 amount={item.amount}
+                hideDeleteBtn={true}
               />
             ))}
       </div>

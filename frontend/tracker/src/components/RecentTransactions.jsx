@@ -8,10 +8,6 @@ const RecentTransactions = ({ transactions, seeMore }) => {
     <div className="p-5 shadow-md rounded-[10px] my-5">
       <div className="flex items-center justify-between ">
         <h2>Recent Transactions</h2>
-        <button className="flex items-center gap-2 bg-gray-200 rounded-[5px] px-2 py-1 cursor-pointer" onClick={() => seeMore()}>
-          <p>See All</p>
-          <FaArrowRight />
-        </button>
       </div>
 
       <div>
@@ -22,6 +18,7 @@ const RecentTransactions = ({ transactions, seeMore }) => {
             date={moment(item.date).format("Do MMM YYYY")}
             title={item.source? item.source:item.category}
             amount={item.amount}
+            hideDeleteBtn={true}
           />
         ))}
       </div>

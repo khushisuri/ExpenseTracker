@@ -41,7 +41,6 @@ const Home = () => {
     fetchDashboardData();
   }, []);
 
-  console.log(dashboardData?.last30DaysExpense?.transactions);
 
   return (
     <DashboardLayout activemenu={"Dashboard"}>

@@ -1,5 +1,5 @@
-const Income = require("../models/Income"); 
-const xlsx = require("xlsx"); 
+const Income = require("../models/Income");
+const xlsx = require("xlsx");
 const User = require("../models/User");
 
 const addIncome = async (req, res) => {
@@ -11,13 +11,15 @@ const addIncome = async (req, res) => {
         .status(400)
         .json({ message: "source amount date cannot be empty" });
     }
-
+    const [year, month, day] = date.split("-").map(Number);
+    const correctedDate = new Date(year, month - 1, day);
+    // removes time zone offset
     const newIncome = new Income({
       userId: userId,
       icon: icon,
       source: source,
       amount: amount,
-      date: new Date(),
+      date: correctedDate,
     });
 
     await newIncome.save();

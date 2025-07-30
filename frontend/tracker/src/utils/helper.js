@@ -22,7 +22,7 @@ export const prepareBarChartData = (data) => {
   return dataArr;
 };
 
-export const prepareIncomeBarChartData = (data) => {
+export const prepareListBarChartData = (data) => {
   const dataArr = data.map((it) => ({
     month:moment(it.date).format("Do MMM YYYY"),
     category: it?.category ? it.category : it.source,

@@ -2,6 +2,7 @@ import React from "react";
 import { HiMiniArrowTrendingUp } from "react-icons/hi2";
 import { HiMiniArrowTrendingDown } from "react-icons/hi2";
 import { CiForkAndKnife } from "react-icons/ci";
+import { LuTrash } from "react-icons/lu";
 
 const TransactionCard = ({
   icon,
@@ -10,6 +11,8 @@ const TransactionCard = ({
   title,
   hideDeleteBtn,
   amount,
+  id = "",
+  setIsDeleteModalOpen = "",
 }) => {
   return (
     <div className="flex items-center justify-between my-5 bg-gray-100 rounded-[10px] px-5 py-2">
@@ -27,18 +30,29 @@ const TransactionCard = ({
           <p className="text-xs text-gray-600">{date}</p>
         </div>
       </div>
-
-      <div
-        className={`flex items-center justify-between gap-1 ${
-          type == "income" ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"
-        } rounded-[10px] px-2 py-1 `}
-      >
-        <span> {type == "income" ? "+" : "-"}</span>
-        <span>${amount}</span>
-        {type == "income" ? (
-          <HiMiniArrowTrendingUp />
-        ) : (
-          <HiMiniArrowTrendingDown />
+      <div className="flex items-center gap-6">
+        <div
+          className={`flex items-center justify-between gap-1 ${
+            type == "income"
+              ? "bg-green-100 text-green-600"
+              : "bg-red-100 text-red-600"
+          } rounded-[10px] px-2 py-1 `}
+        >
+          <span> {type == "income" ? "+" : "-"}</span>
+          <span>${amount}</span>
+          {type == "income" ? (
+            <HiMiniArrowTrendingUp />
+          ) : (
+            <HiMiniArrowTrendingDown />
+          )}
+        </div>
+        {!hideDeleteBtn && (
+          <div
+            className="cursor-pointer text-purple-400"
+            onClick={() => setIsDeleteModalOpen({ show: true, id: id })}
+          >
+            <LuTrash />
+          </div>
         )}
       </div>
     </div>

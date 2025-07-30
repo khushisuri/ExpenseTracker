@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import TransactionCard from "./cards/TransactionCard";
-import moment from 'moment';
+import moment from "moment";
 
 const ExpenseTransactions = ({ transactions, seeMore }) => {
   return (
@@ -17,15 +17,19 @@ const ExpenseTransactions = ({ transactions, seeMore }) => {
         </button>
       </div>
       <div>
-        {transactions && transactions.slice(0, 5).map((item) => (
-          <TransactionCard
-            icon=""
-            type={item.type}
-            date={moment(item.date).format("Do MMM YYYY")}
-            title={item.source ? item.source : item.category}
-            amount={item.amount}
-          />
-        ))}
+        {transactions &&
+          transactions
+            .slice(0, 5)
+            .map((item) => (
+              <TransactionCard
+                icon={item.icon}
+                type={item.type}
+                date={moment(item.date).format("Do MMM YYYY")}
+                title={item.source ? item.source : item.category}
+                amount={item.amount}
+                hideDeleteBtn={true}
+              />
+            ))}
       </div>
     </div>
   );

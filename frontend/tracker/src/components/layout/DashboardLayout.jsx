@@ -6,6 +6,7 @@ import { UserContext } from "../../context/UserContext";
 const DashboardLayout = ({ children, activemenu }) => {
   const { user, clearUser } = useContext(UserContext);
   const [showSideMenu, setShowSideMenu] = useState(false);
+  
   return (
     <div activemenu={activemenu}>
       <Navbar showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu} />

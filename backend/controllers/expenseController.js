@@ -11,13 +11,15 @@ const addExpense = async (req, res) => {
         .status(400)
         .json({ message: "category amount date cannot be empty" });
     }
-
+    const [year, month, day] = date.split("-").map(Number);
+    const correctedDate = new Date(year, month - 1, day); 
+    // removes time zone offset
     const newExpense = new Expense({
       userId: userId,
       icon: icon,
       category: category,
       amount: amount,
-      date: new Date(),
+      date: correctedDate,
     });
 
     await newExpense.save();
