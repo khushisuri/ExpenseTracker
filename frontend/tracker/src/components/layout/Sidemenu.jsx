@@ -6,7 +6,7 @@ import { getCredentials } from "../../utils/helper";
 
 const Sidemenu = ({ activemenu, user, clearUser }) => {
   const navigate = useNavigate();
-  
+
   const handleLogout = () => {
     localStorage.clear();
     clearUser();
@@ -26,6 +26,7 @@ const Sidemenu = ({ activemenu, user, clearUser }) => {
       <p className="my-5 text-center capitalize">{user?.fullname}</p>
       {SIDE_MENU_DATA.map((data) => (
         <div
+          key={data.id}
           onClick={() => {
             if (data.path == "/logout") {
               handleLogout();

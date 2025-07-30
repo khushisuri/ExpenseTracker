@@ -17,8 +17,9 @@ const ExpenseList = ({ transactions, setIsDeleteModalOpen, downloadExcel }) => {
       </div>
 
       <div>
-        {transactions.map((item) => (
+        {transactions.map((item)=> (
           <TransactionCard
+            key={item._id}
             icon={item.icon}
             type={"expense"}
             date={moment(item.date).format("Do MMM YYYY")}

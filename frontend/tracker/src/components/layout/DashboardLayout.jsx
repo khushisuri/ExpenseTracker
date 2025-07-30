@@ -12,7 +12,7 @@ const DashboardLayout = ({ children, activemenu }) => {
       <Navbar showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu} />
       <div className="flex">
       {user && showSideMenu && (
-        <div className="min-[1080px]:hidden">
+        <div className="min-[1080px]:hidden fixed top-[56px] left-0 h-[100vh] z-10">
         <Sidemenu
           activemenu={activemenu}
           user={user}
