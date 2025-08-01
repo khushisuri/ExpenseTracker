@@ -9,10 +9,10 @@ import { IoMdCard } from "react-icons/io";
 import { LuHandCoins } from "react-icons/lu";
 import RecentTransactions from "../../components/RecentTransactions";
 import FinanceOverview from "../../components/FinanceOverview";
-import ExpenseTransactions from "../../components/ExpenseTransactions";
-import Last30Expenses from "../../components/Last30Expenses";
-import Last60Income from "../../components/Last60Income";
-import IncomeTransactions from "../../components/IncomeTransactions";
+import ExpenseTransactions from "../../components/Expense/ExpenseTransactions";
+import Last30Expenses from "../../components/Expense/Last30Expenses";
+import Last60Income from "../../components/Income/Last60Income";
+import IncomeTransactions from "../../components/Income/IncomeTransactions";
 
 const Home = () => {
   useUserAuth();

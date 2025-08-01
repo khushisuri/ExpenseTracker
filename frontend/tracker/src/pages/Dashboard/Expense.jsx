@@ -3,9 +3,9 @@ import DashboardLayout from "../../components/layout/DashboardLayout";
 import axiosInstance from "../../utils/axiosinstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import toast from "react-hot-toast";
-import Modal from "../../components/Modal";
-import ExpenseOverview from "../../components/ExpenseOverview";
-import ExpenseList from "../../components/ExpenseList";
+import Modal from "../../components/Custom/Modal";
+import ExpenseOverview from "../../components/Expense/ExpenseOverview";
+import ExpenseList from "../../components/Expense/ExpenseList";
 import ExpenseForm from "../../components/Forms/ExpenseForm";
 import { useUserAuth } from "../../hooks/useUserAuth";
 

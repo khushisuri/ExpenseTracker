@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../components/layout/DashboardLayout";
-import IncomeOverview from "../../components/IncomeOverview";
+import IncomeOverview from "../../components/Income/IncomeOverview";
 import axiosInstance from "../../utils/axiosinstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import IncomeForm from "../../components/Forms/IncomeForm";
-import Modal from "../../components/Modal";
+import Modal from "../../components/Custom/Modal";
 import toast from "react-hot-toast";
-import IncomeList from "../../components/IncomeList";
+import IncomeList from "../../components/Income/IncomeList";
 import { useUserAuth } from "../../hooks/useUserAuth";
 
 const Income = () => {

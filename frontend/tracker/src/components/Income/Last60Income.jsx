@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CustomPieChart from "./charts/CustomPieChart";
+import CustomPieChart from "../charts/CustomPieChart";
 
 const Last60Income = ({ transactions, totalAmount }) => {
   const [chartData, setChartData] = useState([]);

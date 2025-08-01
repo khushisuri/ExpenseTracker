@@ -19,6 +19,7 @@ const getDashboardData = async (req, res) => {
     ]);
     const last60DaysIncomeTransactions = await Income.find({
       userId,
+      //greater than or equal to
       date: { $gte: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000) },
     }).sort({ date: -1 });
 
@@ -38,7 +39,8 @@ const getDashboardData = async (req, res) => {
 
      const recentIncome = await Income.find({ userId }).sort({ date: -1 }).limit(5);
     const recentExpense = await Expense.find({ userId }).sort({ date: -1 }).limit(5);
-
+    //.toObject() — converts the Mongoose document to a plain JavaScript object and adds type 
+    // property
     const lastTransactions = [
       ...recentIncome.map((txn) => ({ ...txn.toObject(), type: "income" })),
       ...recentExpense.map((txn) => ({ ...txn.toObject(), type: "expense" })),

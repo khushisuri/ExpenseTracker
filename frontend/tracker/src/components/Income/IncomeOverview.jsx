@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import CustomBarChart from "./charts/CustomBarChart";
-import { prepareListBarChartData } from "../utils/helper";
+import CustomBarChart from "../charts/CustomBarChart";
+import { prepareListBarChartData } from "../../utils/helper";
 
 const IncomeOverview = ({ transactions, setIsModalOpen }) => {
   const [chartData, setChartData] = useState([]);
