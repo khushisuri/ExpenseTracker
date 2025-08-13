@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import AuthLayout from "../../components/layout/AuthLayout";
-import Input from "../../components/inputs/input";
+import Input from "../../components/inputs/Input";
 import { Link, useNavigate } from "react-router-dom";
 import { isValidEmail } from "../../utils/helper";
 import ProfilePicSelector from "../../components/Custom/ProfilePicSelector";
