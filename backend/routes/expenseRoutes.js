@@ -6,7 +6,7 @@ const {
   deleteExpense,
   downloadExpenseExcel,
 } = require("../controllers/expenseController");
-const { protect } = require("../middleware.js/AuthMiddleware");
+const { protect } = require("../middleware.js/authMiddleware");
 
 const router = express.Router();
 

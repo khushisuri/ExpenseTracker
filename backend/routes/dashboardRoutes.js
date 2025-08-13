@@ -1,5 +1,5 @@
 const express = require("express");
-const { protect } = require("../middleware.js/AuthMiddleware");
+const { protect } = require("../middleware.js/authMiddleware");
 
 const {getDashboardData} = require("../controllers/dashboardController");
 

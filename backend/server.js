@@ -35,6 +35,6 @@ app.use("/uploads", ...) tells Express to serve files from that folder when a cl
 // and the route handler function returns the image url to the file uploaded to the server folder
 app.use("/uploads",express.static(path.join(__dirname,"uploads")));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT,()=>console.log(`app running on port ${PORT}`))
